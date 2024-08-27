@@ -106,7 +106,7 @@ Instead of returning plain text, you can return a rendered HTML template.
 
 1. **Create a Template**: Create a directory named `templates`, and inside it, create a file named `home.html`.
 
-```html5
+```html
 <!-- templates/home.html -->
 <!DOCTYPE html>
 <html lang="en">
