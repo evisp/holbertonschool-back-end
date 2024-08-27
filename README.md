@@ -63,3 +63,35 @@ python3 app.py
 ```
 
 Open your browser and navigate to `http://127.0.0.1:5000/` to see `"Hello, Flask!"` displayed.
+
+## 3. Defining Routes in Flask
+ 
+### What is a Route?
+A **route in Flask is a URL pattern that is associated with a particular function**. When a user visits a URL, Flask invokes the function linked to that route.
+
+### Example of Route Definition
+
+```python
+@app.route('/about')
+def about():
+    return "This is the About page."
+```
+- `@app.route('/about')`: This decorator maps the URL `/about` to the `about()` function.
+
+In this example, visiting `http://127.0.0.1:5000/about` will trigger the `about()` function and return `"This is the About page."`
+
+## 4. Handling Variables in a Route
+You can capture variables from the URL and pass them to your functions.
+
+### Example of Variables in a Route
+
+```python
+@app.route('/user/<username>')
+def show_user_profile(username):
+    return f"User: {username}"
+```
+
+- `<username>`: A dynamic component in the URL that Flask captures and passes as an argument to the `show_user_profile()` function.
+
+Visiting `http://127.0.0.1:5000/user/John` will display `"User: John"`
+
