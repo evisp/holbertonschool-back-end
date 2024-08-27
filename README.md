@@ -176,3 +176,85 @@ def show_users():
 - Variables: `{{ user.name }}` inserts the user's name.
 - Loops: `{% for user in users %}` loops through the list of users.
 - Conditions: `{% if user.active %}` checks if the user is active.
+
+## 8. Displaying Data from a MySQL Database in HTML
+To connect Flask to a MySQL database and display data, follow these steps:
+
+### 8.1. Install MySQL Connector
+
+```python
+pip install mysql-connector-python
+```
+
+### 8.2. Configure the Database Connection
+import mysql.connector
+
+# Database configuration
+
+```python
+db_config = {
+    # replace with the actual username, password and database
+    'user': 'root',
+    'password': 'root',
+    'host': '127.0.0.1',
+    'database': 'sakila'
+}
+
+def get_db_connection():
+    connection = mysql.connector.connect(**db_config)
+    return connection
+```
+
+## 8.3. Fetch and Display Data:
+
+1. Route and Data Fetching
+
+Assuming you have a table called actors in the `sakila` database
+
+```python
+@app.route('/actors')
+def fetch_actors():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT actor_id, first_name, last_name FROM actor LIMIT 10")
+    actors = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return render_template('actors.html', actors=actors)
+```
+
+2. Template File (`templates/actors.html`)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actors List</title>
+</head>
+<body>
+    <h1>Actors List</h1>
+    <table>
+        <tr>
+            <th>Actor ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        {% for actor in actors %}
+        <tr>
+            <td>{{ actor.actor_id }}</td>
+            <td>{{ actor.first_name }}</td>
+            <td>{{ actor.last_name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+</body>
+</html>
+
+```
+
+## Conclusion
+
+This tutorial covered the basics of using Flask as a web framework, defining routes, working with templates, handling dynamic content, and integrating a MySQL database. With these fundamentals, you can start building more complex and robust web applications using Flask.
