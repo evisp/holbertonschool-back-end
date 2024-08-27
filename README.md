@@ -95,3 +95,28 @@ def show_user_profile(username):
 
 Visiting `http://127.0.0.1:5000/user/John` will display `"User: John"`
 
+## 5. What is a Template?
+
+A template is an **HTML file that contains placeholders for dynamic content**. Flask uses the `Jinja2` template engine to render templates with data passed from the Flask app.
+
+## 6. Creating HTML Responses with Templates
+Instead of returning plain text, you can return a rendered HTML template.
+
+### Example:
+
+1. **Create a Template**: Create a directory named `templates`, and inside it, create a file named `home.html`.
+
+```html5
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to Flask</h1>
+</body>
+</html>
+```
