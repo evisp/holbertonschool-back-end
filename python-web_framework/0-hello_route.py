@@ -6,9 +6,9 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route("/airbnb-onepage/", strict_slashes=False)
+@app.route("/", strict_slashes=False)
 def hello():
-    """Function that returns a simple string"""
+    """Returns a simple string"""
     return "Hello HBNB!"
 
 
