@@ -120,3 +120,59 @@ Instead of returning plain text, you can return a rendered HTML template.
 </body>
 </html>
 ```
+
+2. **Render the Template**
+```python
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+```
+
+- `render_template('home.html')`: Renders the `home.html` template and returns it as an HTTP response.
+
+## 7. Creating Dynamic Templates
+Dynamic templates allow you to insert variables, perform loops, and use conditional statements.
+
+### Example with Variables, Loops, and Conditions:
+
+1. **Template File** (`templates/users.html`)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+</head>
+<body>
+    <h1>User List</h1>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.name }} - {% if user.active %}Active{% else %}Inactive{% endif %}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+```
+
+2. **Route Handling**
+
+```python
+@app.route('/users')
+def show_users():
+    users = [
+        {'name': 'Alice', 'active': True},
+        {'name': 'Bob', 'active': False},
+        {'name': 'Charlie', 'active': True}
+    ]
+    return render_template('users.html', users=users)
+```
+
+- Variables: `{{ user.name }}` inserts the user's name.
+- Loops: `{% for user in users %}` loops through the list of users.
+- Conditions: `{% if user.active %}` checks if the user is active.
