@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Film Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .film-details {
+            list-style-type: none;
+            padding: 0;
+        }
+        .film-details li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Film Details</h1>
+    <p><strong>Film ID:</strong> {{ film.film_id }}</p>
+    <p><strong>Title:</strong> {{ film.title }}</p>
+    <p><strong>Description:</strong> {{ film.description }}</p>
+    <ul class="film-details">
+        <li><strong>Release Year:</strong> {{ film.release_year }}</li>
+        <li><strong>Language ID:</strong> {{ film.language_id }}</li>
+        <li><strong>Original Language ID:</strong> {{ film.original_language_id }}</li>
+        <li><strong>Rental Duration:</strong> {{ film.rental_duration }}</li>
+        <li><strong>Rental Rate:</strong> {{ film.rental_rate }}</li>
+        <li><strong>Length:</strong> {{ film.length }}</li>
+        <li><strong>Replacement Cost:</strong> {{ film.replacement_cost }}</li>
+        <li><strong>Rating:</strong> {{ film.rating }}</li>
+        <li><strong>Special Features:</strong> {{ film.special_features }}</li>
+        <li><strong>Last Update:</strong> {{ film.last_update }}</li>
+    </ul>
+</body>
+</html>
