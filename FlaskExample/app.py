@@ -17,7 +17,7 @@ def get_db_connection():
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('home_old.html')
 
 
 @app.route('/films')
@@ -38,7 +38,7 @@ def fetch_actors():
     actors = cursor.fetchall()
     cursor.close()
     conn.close()
-    return render_template('actors.html', actors=actors)
+    return render_template('actors_old.html', actors=actors)
 
 @app.route('/film/<int:film_id>')
 def fetch_film_details(film_id):
