@@ -122,6 +122,7 @@ Instead of returning plain text, you can return a rendered HTML template.
 ```
 
 2. **Render the Template**
+
 ```python
 from flask import Flask, render_template
 
